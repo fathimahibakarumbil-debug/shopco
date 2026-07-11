@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap'); /* For subtext/button */
+
+/* "Integral CF" ഫോണ്ട് ഉണ്ടെങ്കിൽ: */
+@font-face {
+  font-family: 'Integral CF';
+  src: url('/public/fonts/IntegralCF-Bold.woff2') format('woff2'); /* പാത്ത് ശരിയാണെന്ന് ഉറപ്പാക്കുക */
+  font-weight: 900;
+  font-style: normal;
+}

@@ -1,0 +1,24 @@
+# React
+clientF/node_modules/
+clientF/build/
+
+# Django
+serverB/venv/
+serverB/db.sqlite3
+serverB/__pycache__/
+serverB/**/*.pyc
+serverB/media/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Environment
+.env
+*.env
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
