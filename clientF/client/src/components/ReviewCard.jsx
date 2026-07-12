@@ -1,7 +1,6 @@
 import React from "react";
-import { Box, Typography, Rating, IconButton } from "@mui/material";
+import { Box, Typography, Rating} from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 export default function ReviewCard({ review }) {
   return (

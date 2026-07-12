@@ -131,7 +131,7 @@ const brandsConfig = [
 ];
 
 const HeroSection = () => {
-  const navigate = useNavigate();
+  
 
   const scrollToNewArrivals = () => {
     const element = document.getElementById("new-arrivals-section");

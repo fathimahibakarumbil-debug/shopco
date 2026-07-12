@@ -92,7 +92,7 @@ export default function ProductDetail() {
 
     fetchData();
     window.scrollTo(0, 0);
-  }, [id]);
+  }, [colors]);
 
   const processedReviews = useMemo(() => {
     let result = [...reviews];
