@@ -54,7 +54,10 @@ export default function ProductDetail() {
     user: "You",
   });
 
-  const colors = ["#4F4631", "#314F4A", "#31344F", "#000000", "#FF3333"];
+  const colors = useMemo(
+  () => ["#4F4631", "#314F4A", "#31344F", "#000000", "#FF3333"],
+  []
+);
   const sizes = ["Small", "Medium", "Large", "X-Large"];
 
   const [selectedColor, setSelectedColor] = useState(colors[0]);
