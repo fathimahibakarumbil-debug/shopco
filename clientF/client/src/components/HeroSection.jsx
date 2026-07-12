@@ -8,8 +8,6 @@ import {
   Divider,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom";
-
 import heroImg from "../assets/image.png";
 
 // --- STYLED COMPONENTS ---
@@ -131,7 +129,6 @@ const brandsConfig = [
 ];
 
 const HeroSection = () => {
-  
 
   const scrollToNewArrivals = () => {
     const element = document.getElementById("new-arrivals-section");
