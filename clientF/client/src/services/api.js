@@ -3,7 +3,12 @@ import axios from "axios";
 // ==============================================
 // BASE URL
 // ==============================================
-const API_BASE_URL = "http://127.0.0.1:8000/api/";
+
+// Local Development
+// const API_BASE_URL = "http://127.0.0.1:8000/api/";
+
+// Render Production
+const API_BASE_URL = "https://shopco-1.onrender.com/api/";
 
 // ==============================================
 // AXIOS INSTANCE
@@ -28,14 +33,13 @@ api.interceptors.request.use(
 
     return config;
   },
-  (error) => Promise.reject(error),
+  (error) => Promise.reject(error)
 );
 
 // ==============================================
 // AUTH APIs
 // ==============================================
 
-// Register
 export const registerUser = async (userData) => {
   const response = await api.post("auth/register/", userData);
 
@@ -46,7 +50,6 @@ export const registerUser = async (userData) => {
   return response;
 };
 
-// Login
 export const loginUser = async (credentials) => {
   const response = await api.post("auth/login/", credentials);
 
@@ -61,7 +64,6 @@ export const loginUser = async (credentials) => {
 // PRODUCTS APIs
 // ==============================================
 
-// GET PRODUCTS
 export const getProducts = async (category = "") => {
   try {
     let url = "products/";
@@ -71,8 +73,6 @@ export const getProducts = async (category = "") => {
     }
 
     const response = await api.get(url);
-
-    console.log("Products API Response:", response.data);
 
     if (Array.isArray(response.data)) return response.data;
     if (response.data.results && Array.isArray(response.data.results))
@@ -84,15 +84,15 @@ export const getProducts = async (category = "") => {
 
     return [];
   } catch (error) {
-    console.error("Error fetching products:", error);
+    console.error(error);
     return [];
   }
 };
 
-// GET RELATED PRODUCTS
 export const getRelatedProducts = async (id) => {
   try {
     const response = await api.get("products/");
+
     let allItems = [];
 
     if (Array.isArray(response.data)) {
@@ -101,18 +101,15 @@ export const getRelatedProducts = async (id) => {
       allItems = response.data.results;
     }
 
-    const filtered = allItems
-      .filter((item) => item.id !== Number(id))
-      .slice(0, 4);
-
-    return { data: filtered };
+    return {
+      data: allItems.filter((item) => item.id !== Number(id)).slice(0, 4),
+    };
   } catch (error) {
-    console.error("Error fetching related products:", error);
+    console.error(error);
     return { data: [] };
   }
 };
 
-// GET NEW ARRIVALS
 export const getNewArrivals = async () => {
   try {
     const response = await api.get("products/?category=new_arrival");
@@ -120,12 +117,11 @@ export const getNewArrivals = async () => {
       ? response.data
       : response.data.results || [];
   } catch (error) {
-    console.error("Error fetching new arrivals:", error);
+    console.error(error);
     return [];
   }
 };
 
-// GET TOP SELLING
 export const getTopSelling = async () => {
   try {
     const response = await api.get("products/?category=top_selling");
@@ -133,7 +129,7 @@ export const getTopSelling = async () => {
       ? response.data
       : response.data.results || [];
   } catch (error) {
-    console.error("Error fetching top selling:", error);
+    console.error(error);
     return [];
   }
 };
@@ -151,53 +147,50 @@ export const getShopProducts = async (filters = {}) => {
       ? response.data
       : response.data.results || [];
   } catch (error) {
-    console.error("Error fetching shop products:", error);
+    console.error(error);
     return [];
   }
 };
 
-// GET SINGLE PRODUCT
 export const getProduct = async (id) => {
-  try {
-    const response = await api.get(`products/${id}/`);
-    return { data: response.data };
-  } catch (error) {
-    console.error("Error fetching product:", error);
-    throw error;
-  }
+  const response = await api.get(`products/${id}/`);
+  return { data: response.data };
 };
 
-// ADD PRODUCT
 export const addProduct = async (data) => {
   const response = await api.post("products/", data);
   return response.data;
 };
 
-// UPDATE PRODUCT
 export const updateProduct = async (id, data) => {
   const response = await api.put(`products/${id}/`, data);
   return response.data;
 };
 
-// DELETE PRODUCT
 export const deleteProduct = async (id) => {
   const response = await api.delete(`products/${id}/`);
   return response.data;
 };
 
-// DRESS STYLES APIs
+// ==============================================
+// DRESS STYLES
+// ==============================================
+
 export const getDressStyles = async () => {
   try {
     const response = await api.get("dress-styles/");
     if (Array.isArray(response.data)) return response.data;
     return response.data.results || response.data.styles || [];
   } catch (error) {
-    console.error("Error fetching dress styles:", error);
+    console.error(error);
     return [];
   }
 };
 
-// REVIEWS APIs
+// ==============================================
+// REVIEWS
+// ==============================================
+
 export const getReviews = async () => {
   try {
     const response = await api.get("reviews/");
@@ -205,12 +198,11 @@ export const getReviews = async () => {
       ? response.data
       : response.data.results || [];
   } catch (error) {
-    console.error("Error fetching reviews:", error);
+    console.error(error);
     return [];
   }
 };
 
-// GET PRODUCT REVIEWS
 export const getProductReviews = async (productId) => {
   try {
     const response = await api.get(`reviews/?product=${productId}`);
@@ -218,15 +210,24 @@ export const getProductReviews = async (productId) => {
       ? response.data
       : response.data.results || [];
   } catch (error) {
-    console.error("Error fetching product reviews:", error);
+    console.error(error);
     return [];
   }
 };
 
-// ADD REVIEW
 export const addReview = async (data) => {
   const response = await api.post("reviews/", data);
   return response.data;
 };
 
 export default api;
+
+
+
+
+
+
+
+
+
+

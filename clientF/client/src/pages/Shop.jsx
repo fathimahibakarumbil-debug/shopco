@@ -84,7 +84,7 @@ const Shop = () => {
 
   const fetchProducts = async () => {
     try {
-      let url = "http://127.0.0.1:8000/api/shop/products/";
+      let url = "https://shopco-1.onrender.com/api/shop/products/";
 
       const response = await axios.get(url);
 
